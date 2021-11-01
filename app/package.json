@@ -1,0 +1,14 @@
+{
+  "name": "my-service",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/app"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "engines": {
+    "node": ">=16"
+  }
+}
