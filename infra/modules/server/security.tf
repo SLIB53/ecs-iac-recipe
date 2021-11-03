@@ -10,18 +10,20 @@ data "aws_iam_policy_document" "server_agent" {
 }
 
 resource "aws_iam_role" "server_agent" {
-  assume_role_policy = data.aws_iam_policy_document.server_agent.json
-
   name = "server-agent"
+
+  assume_role_policy = data.aws_iam_policy_document.server_agent.json
 }
 
 resource "aws_iam_role_policy_attachment" "server_agent" {
+  role = aws_iam_role.server_agent.name
+
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonEC2ContainerServiceforEC2Role"
-  role       = aws_iam_role.server_agent.name
 }
 
 resource "aws_iam_instance_profile" "server_profile" {
   name = "server-agent"
+
   role = aws_iam_role.server_agent.name
 }
 
